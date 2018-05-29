@@ -12,7 +12,7 @@ COMMIT=$(git rev-parse HEAD)
 BRANCH=$(git rev-parse --abbrev-ref HEAD)
 GOLDFLAGS="-X main.Commit=${COMMIT} -X main.Branch=${BRANCH}"
 
-go run -ldflags "${GOLDFLAGS}" cmd/skycoin/skycoin.go \
+go run -ldflags "${GOLDFLAGS}" cmd/troncash/troncash.go \
     -gui-dir="${DIR}/src/gui/static/" \
     -launch-browser=true \
     -enable-wallet-api=true \

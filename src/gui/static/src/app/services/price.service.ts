@@ -16,7 +16,7 @@ export class PriceService {
     Observable.timer(0, 10 * 60 * 1000).subscribe(() => {
       this.http.get(`https://api.coinmarketcap.com/v2/ticker/${this.CMC_TICKER_ID}/`)
         .map(response => response.json())
-        .subscribe(response => this.price.next(response.data.quotes.USD.price));
+        .subscribe(response => this.price.next(0.01));
     });
   }
 }

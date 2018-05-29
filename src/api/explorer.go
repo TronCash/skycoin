@@ -30,6 +30,7 @@ type CoinSupply struct {
 	LockedAddresses []string `json:"locked_distribution_addresses"`
 }
 
+
 func getCoinSupply(gateway Gatewayer) http.HandlerFunc {
 	return func(w http.ResponseWriter, r *http.Request) {
 		supply := coinSupply(gateway, w, r)

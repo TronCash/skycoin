@@ -97,6 +97,10 @@ SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 MIT
 MIT
 
+@ngx-translate/core@9.1.1
+MIT
+MIT
+
 @angular/common@5.2.0
 MIT
 MIT

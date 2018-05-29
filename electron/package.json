@@ -1,13 +1,13 @@
 {
-    "name": "skycoin",
-    "productName": "Skycoin",
-    "author": "skycoin",
+    "name": "troncash",
+    "productName": "TRON Cash",
+    "author": "rogerver",
     "main": "src/electron-main.js",
-    "version": "0.23.1-rc2",
-    "description": "skycoin wallet",
+    "version": "0.1.0",
+    "description": "tron cash wallet",
     "license": "MIT",
     "build": {
-        "appId": "org.skycoin.skycoin",
+        "appId": "org.troncash.troncash",
         "nsis": {
             "oneClick": false,
             "allowToChangeInstallationDirectory": true

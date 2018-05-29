@@ -1,23 +1,23 @@
-![skycoin logo](https://user-images.githubusercontent.com/26845312/32426705-d95cb988-c281-11e7-9463-a3fce8076a72.png)
+![troncash logo](https://user-images.githubusercontent.com/26845312/32426705-d95cb988-c281-11e7-9463-a3fce8076a72.png)
 
-# Skycoin
+# TRON Cash
 
 [![Build Status](https://travis-ci.org/skycoin/skycoin.svg)](https://travis-ci.org/skycoin/skycoin)
 [![GoDoc](https://godoc.org/github.com/skycoin/skycoin?status.svg)](https://godoc.org/github.com/skycoin/skycoin)
 [![Go Report Card](https://goreportcard.com/badge/github.com/skycoin/skycoin)](https://goreportcard.com/report/github.com/skycoin/skycoin)
 
-Skycoin is a next-generation cryptocurrency.
+TRON Cash is a next-generation cryptocurrency.
 
-Skycoin improves on Bitcoin in too many ways to be addressed here.
+TRON Cash improves on Bitcoin in too many ways to be addressed here.
 
-Skycoin is a small part of OP Redecentralize and OP Darknet Plan.
+TRON Cash is a small part of OP Redecentralize and OP Darknet Plan.
 
 ## Links
 
 * [skycoin.net](https://www.skycoin.net)
 * [Skycoin Blog](https://www.skycoin.net/blog)
 * [Skycoin Docs](https://www.skycoin.net/docs)
-* [Skycoin Blockchain Explorer](https://explorer.skycoin.net)
+* [Skycoin Blockchain Explorer](https://explorer.troncash.net)
 * [Skycoin Development Telegram Channel](https://t.me/skycoindev)
 
 ## Table of Contents
@@ -66,7 +66,7 @@ Skycoin is a small part of OP Redecentralize and OP Darknet Plan.
 
 ## Installation
 
-Skycoin supports go1.10+.
+TRON Cash supports go1.10+.
 
 ### Go 1.10+ Installation and Setup
 

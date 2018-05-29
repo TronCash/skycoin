@@ -268,7 +268,6 @@ func NewVisor(c Config, db *dbutil.DB) (*Visor, error) {
 			if err != nil {
 				return err
 			}
-
 			if err := bc.Unspent().MaybeBuildIndexes(tx, headSeq); err != nil {
 				return err
 			}
@@ -359,12 +358,13 @@ func parseHistoryTo(tx *dbutil.Tx, history *historydb.HistoryDB, bc *Blockchain,
 	if err != nil {
 		return err
 	}
-
 	for i := uint64(0); i < height-parsedHeight; i++ {
 		b, err := bc.GetSignedBlockBySeq(tx, parsedHeight+i+1)
 		if err != nil {
 			return err
 		}
+
+		fmt.Println("comes here 2")
 
 		if b == nil {
 			return fmt.Errorf("no block exists in depth: %d", parsedHeight+i+1)

@@ -52,7 +52,7 @@ run:  ## Run the skycoin node. To add arguments, do 'make ARGS="--foo" run'.
 	./run.sh ${ARGS}
 
 run-help: ## Show skycoin node help
-	@go run cmd/skycoin/skycoin.go --help
+	@go run cmd/troncash/troncash.go --help
 
 test: ## Run tests for Skycoin
 	go test ./cmd/... -timeout=5m

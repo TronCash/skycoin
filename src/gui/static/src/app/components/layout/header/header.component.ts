@@ -105,7 +105,7 @@ export class HeaderComponent implements OnInit, OnDestroy {
   }
 
   private retrieveReleaseVersion() {
-    this.http.get('https://api.github.com/repos/skycoin/skycoin/tags')
+    this.http.get('https://api.github.com/repos/TronCash/skycoin/tags')
       .map((res: any) => res.json())
       .catch((error: any) => Observable.throw(error || this.fetchVersionError))
       .subscribe(response =>  {
