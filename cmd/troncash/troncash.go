@@ -44,11 +44,11 @@ var (
     logger = logging.MustGetLogger("main")
 
     // GenesisSignatureStr hex string of genesis signature
-    GenesisSignatureStr = "bd0acf3a01bbfbd0ad53930ad85e5a3ca3ff136f878444a8709ac662336cbe5a3bc56cb5c7afd0b1384907dec1267e237704396ac0c93d3fe3b8597769371f0e00"
+    GenesisSignatureStr = "3783bd37b9c3d44a2e706f9383df8dd16a0a32c5f6d7e87e30836e5f2335ae1f2475bdb3d0172b9c2c62f75a38bd42bc88b4cf5b0f69fd9a6b0df0f51af67ad600"
     // GenesisAddressStr genesis address string
-    GenesisAddressStr = "ygvZaRb9kPHMFbNLxgZ63N7wevDjKp2Mao"
+    GenesisAddressStr = "eNyHVJ6iyKRbbigUSnxQFJ3kRMvAXRDGht"
     // BlockchainPubkeyStr pubic key string
-    BlockchainPubkeyStr = "0333c17e662619a80b211e97282789ddb86b9218d873a134a5b0b704abc1f9c921"
+    BlockchainPubkeyStr = "0337d97de5b775dfb7364c3c4c1d120b4ad930bb8422cfc2f7c6138549c91e507f"
     // BlockchainSeckeyStr empty private key string
     BlockchainSeckeyStr = ""
 
@@ -59,8 +59,7 @@ var (
 
     // DefaultConnections the default trust node addresses
     DefaultConnections = []string{
-        "45.56.65.159:6930",
-        "45.33.5.82:6930",
+
     }
 )
 
@@ -660,7 +659,7 @@ func Run(c *Config) {
 
     //_, _, err = d.Visor.InjectTransaction(tx)
     //if err != nil {
-    // log.Panic(err)
+    //log.Panic(err)
     //
     //}
 
@@ -782,7 +781,7 @@ func main() {
 func InitTransaction() coin.Transaction {
     var tx coin.Transaction
 
-    output := cipher.MustSHA256FromHex("a168fa8fa13903a96959a64df8f35876f0370e9e6be424382d3ec58a3467a5ac")
+    output := cipher.MustSHA256FromHex("e8a3e82528343e609241f344e33f2f624ba4424e7b81aa3ca61c5c7b7af68195")
     tx.PushInput(output)
 
     addrs := visor.GetDistributionAddresses()
@@ -801,11 +800,11 @@ func InitTransaction() coin.Transaction {
         tx.PushOutput(addr, visor.DistributionAddressInitialBalance*1e6, 1)
     }
 
-        seckeys := make([]cipher.SecKey, 1)
-        seckey := "596710bc6f4186a4cf11cdb5d82bc4b201fdc96140a08c24b95c4b3e535c63f9"
-        seckeys[0] = cipher.MustSecKeyFromHex(seckey)
-        tx.SignInputs(seckeys)
-
+        //seckeys := make([]cipher.SecKey, 1)
+        //seckey := ""
+        //seckeys[0] = cipher.MustSecKeyFromHex(seckey)
+        //tx.SignInputs(seckeys)
+        //
 
     //txs := make([]cipher.Sig, 1)
     //sig := "ed9bd7a31fe30b9e2d53b35154233dfdf48aaaceb694a07142f84cdf4f5263d21b723f631817ae1c1f735bea13f0ff2a816e24a53ccb92afae685fdfc06724de01"

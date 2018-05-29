@@ -25,7 +25,7 @@ let currentURL;
 app.commandLine.appendSwitch('host-rules', 'MAP * 127.0.0.1, EXCLUDE api.coinmarketcap.com, api.github.com');
 app.commandLine.appendSwitch('ssl-version-fallback-min', 'tls1.2');
 app.commandLine.appendSwitch('--no-proxy-server');
-app.setAsDefaultProtocolClient('skycoin');
+app.setAsDefaultProtocolClient('troncash');
 
 
 
@@ -53,15 +53,15 @@ function startSkycoin() {
   var exe = (() => {
     switch (process.platform) {
       case 'darwin':
-        return path.join(appPath, '../../Resources/app/skycoin');
+        return path.join(appPath, '../../Resources/app/troncash');
       case 'win32':
         // Use only the relative path on windows due to short path length
         // limits
-        return './resources/app/skycoin.exe';
+        return './resources/app/troncash.exe';
       case 'linux':
-        return path.join(path.dirname(appPath), './resources/app/skycoin');
+        return path.join(path.dirname(appPath), './resources/app/troncash');
       default:
-        return './resources/app/skycoin';
+        return './resources/app/troncash';
     }
   })()
 
