@@ -44,7 +44,7 @@ var (
     logger = logging.MustGetLogger("main")
 
     // GenesisSignatureStr hex string of genesis signature
-    GenesisSignatureStr = "3783bd37b9c3d44a2e706f9383df8dd16a0a32c5f6d7e87e30836e5f2335ae1f2475bdb3d0172b9c2c62f75a38bd42bc88b4cf5b0f69fd9a6b0df0f51af67ad600"
+    GenesisSignatureStr = "aa5d3112105508eafdcf7cab4b6ee7eb1c13398aada66b517681a8e7442862bd72e8fec8faa4e71c1c02acb9a4dd1077f5db9e6002f0defd031b069f488e58c601"
     // GenesisAddressStr genesis address string
     GenesisAddressStr = "eNyHVJ6iyKRbbigUSnxQFJ3kRMvAXRDGht"
     // BlockchainPubkeyStr pubic key string
@@ -55,7 +55,7 @@ var (
     // GenesisTimestamp genesis block create unix time
     GenesisTimestamp uint64 = 1527550727
     // GenesisCoinVolume represents the coin capacity
-    GenesisCoinVolume uint64 = 100e12
+    GenesisCoinVolume uint64 = 100e15
 
     // DefaultConnections the default trust node addresses
     DefaultConnections = []string{
@@ -262,7 +262,7 @@ var devConfig = Config{
     //gnet uses this for TCP incoming and outgoing
     Port: 6930,
     // MaxOutgoingConnections is the maximum outgoing connections allowed.
-    MaxOutgoingConnections: 8,
+    MaxOutgoingConnections: 16,
     // MaxDefaultOutgoingConnections is the maximum default outgoing connections allowed.
     MaxDefaultPeerOutgoingConnections: 1,
     DownloadPeerList:                  false,
@@ -782,7 +782,7 @@ func main() {
 func InitTransaction() coin.Transaction {
     var tx coin.Transaction
 
-    output := cipher.MustSHA256FromHex("e8a3e82528343e609241f344e33f2f624ba4424e7b81aa3ca61c5c7b7af68195")
+    output := cipher.MustSHA256FromHex("e06a0e6ab33d7e916e18afdac8489d2859fdbc15da6138a65c5ff0d79a372d20")
     tx.PushInput(output)
 
     addrs := visor.GetDistributionAddresses()
@@ -798,7 +798,7 @@ func InitTransaction() coin.Transaction {
 
     for i := range addrs {
         addr := cipher.MustDecodeBase58Address(addrs[i])
-        tx.PushOutput(addr, visor.DistributionAddressInitialBalance*1e6, 1)
+        tx.PushOutput(addr, visor.DistributionAddressInitialBalance*1e9, 100e12)
     }
 
         //seckeys := make([]cipher.SecKey, 1)
