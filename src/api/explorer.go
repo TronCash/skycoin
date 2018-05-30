@@ -89,7 +89,9 @@ func coinSupply(gateway Gatewayer, w http.ResponseWriter, r *http.Request) *Coin
 	}
 
 	totalSupplyStr, err := droplet.ToString(totalSupply)
+	fmt.Println("comes here 2")
 	if err != nil {
+
 		err = fmt.Errorf("Failed to convert coins to string: %v", err)
 		wh.Error500(w, err.Error())
 		return nil
