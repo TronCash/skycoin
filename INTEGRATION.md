@@ -1,8 +1,8 @@
-# Skycoin Exchange Integration
+# TRONCash Exchange Integration
 
-A Skycoin node offers multiple interfaces:
+A TRONCash node offers multiple interfaces:
 
-* REST API on port 6420 (when running from source; if you are using the releases downloaded from the website, the port is randomized)
+* REST API on port 6930 (when running from source; if you are using the releases downloaded from the website, the port is randomized)
 * JSON-RPC 2.0 API accessible on `/api/v1/webrpc` endpoint **[deprecated]**
 
 A CLI tool is provided in `cmd/cli/cli.go`. This tool communicates over the JSON-RPC 2.0 API. In the future it will communicate over the REST API.
@@ -13,15 +13,15 @@ The API interfaces do not support authentication or encryption so they should on
 
 If your application is written in Go, you can use these client libraries to interface with the node:
 
-* [Skycoin REST API Client Godoc](https://godoc.org/github.com/skycoin/skycoin/src/api#Client)
-* [Skycoin CLI Godoc](https://godoc.org/github.com/skycoin/skycoin/src/cli)
+* [TRONCash REST API Client Godoc](https://godoc.org/github.com/troncash/troncash/src/api#Client)
+* [TRONCash CLI Godoc](https://godoc.org/github.com/troncash/troncash/src/cli)
 
 *Note*: The CLI interface will be deprecated and replaced with a better one in the future.
 
-The wallet APIs in the REST API operate on wallets loaded from and saved to `~/.skycoin/wallets`.
-Use the CLI tool to perform seed generation and transaction signing outside of the Skycoin node.
+The wallet APIs in the REST API operate on wallets loaded from and saved to `~/.troncash/wallets`.
+Use the CLI tool to perform seed generation and transaction signing outside of the TRONCash node.
 
-The Skycoin node's wallet APIs can be enabled with `-enable-wallet-api`.
+The TRONCash node's wallet APIs can be enabled with `-enable-wallet-api`.
 
 For a node used to support another application,
 it is recommended to use the REST API for blockchain queries and disable the wallet APIs,
@@ -31,36 +31,36 @@ and to use the CLI tool for wallet operations (seed and address generation, tran
 
 - [API Documentation](#api-documentation)
     - [Wallet REST API](#wallet-rest-api)
-    - [Skycoin command line interface](#skycoin-command-line-interface)
-    - [Skycoin REST API Client Documentation](#skycoin-rest-api-client-documentation)
-    - [Skycoin Go Library Documentation](#skycoin-go-library-documentation)
-    - [libskycoin Documentation](#libskycoin-documentation)
+    - [TRONCash command line interface](#troncash-command-line-interface)
+    - [TRONCash REST API Client Documentation](#troncash-rest-api-client-documentation)
+    - [TRONCash Go Library Documentation](#troncash-go-library-documentation)
+    - [libtroncash Documentation](#libtroncash-documentation)
 - [Implementation guidelines](#implementation-guidelines)
     - [Scanning deposits](#scanning-deposits)
         - [Using the CLI](#using-the-cli)
         - [Using the REST API](#using-the-rest-api)
-        - [Using skycoin as a library in a Go application](#using-skycoin-as-a-library-in-a-go-application)
+        - [Using troncash as a library in a Go application](#using-troncash-as-a-library-in-a-go-application)
     - [Sending coins](#sending-coins)
         - [General principles](#general-principles)
         - [Using the CLI](#using-the-cli-1)
         - [Using the REST API](#using-the-rest-api-1)
-        - [Using skycoin as a library in a Go application](#using-skycoin-as-a-library-in-a-go-application-1)
+        - [Using troncash as a library in a Go application](#using-troncash-as-a-library-in-a-go-application-1)
         - [Coinhours](#coinhours)
             - [REST API](#rest-api)
             - [CLI](#cli)
     - [Verifying addresses](#verifying-addresses)
         - [Using the CLI](#using-the-cli-2)
         - [Using the REST API](#using-the-rest-api-2)
-        - [Using skycoin as a library in a Go application](#using-skycoin-as-a-library-in-a-go-application-2)
-        - [Using skycoin as a library in other applications](#using-skycoin-as-a-library-in-other-applications)
-    - [Checking Skycoin node connections](#checking-skycoin-node-connections)
+        - [Using troncash as a library in a Go application](#using-troncash-as-a-library-in-a-go-application-2)
+        - [Using troncash as a library in other applications](#using-troncash-as-a-library-in-other-applications)
+    - [Checking TRONCash node connections](#checking-troncash-node-connections)
         - [Using the CLI](#using-the-cli-3)
         - [Using the REST API](#using-the-rest-api-3)
-        - [Using skycoin as a library in a Go application](#using-skycoin-as-a-library-in-a-go-application-3)
-    - [Checking Skycoin node status](#checking-skycoin-node-status)
+        - [Using troncash as a library in a Go application](#using-troncash-as-a-library-in-a-go-application-3)
+    - [Checking TRONCash node status](#checking-troncash-node-status)
         - [Using the CLI](#using-the-cli-4)
         - [Using the REST API](#using-the-rest-api-4)
-        - [Using skycoin as a library in a Go application](#using-skycoin-as-a-library-in-a-go-application-4)
+        - [Using troncash as a library in a Go application](#using-troncash-as-a-library-in-a-go-application-4)
 
 <!-- /MarkdownTOC -->
 
@@ -71,21 +71,21 @@ and to use the CLI tool for wallet operations (seed and address generation, tran
 
 [Wallet REST API](src/api/README.md).
 
-### Skycoin command line interface
+### TRONCash command line interface
 
 [CLI command API](cmd/cli/README.md).
 
-### Skycoin REST API Client Documentation
+### TRONCash REST API Client Documentation
 
-[Skycoin REST API Client](https://godoc.org/github.com/skycoin/skycoin/src/api#Client)
+[TRONCash REST API Client](https://godoc.org/github.com/troncash/troncash/src/api#Client)
 
-### Skycoin Go Library Documentation
+### TRONCash Go Library Documentation
 
-[Skycoin Godoc](https://godoc.org/github.com/skycoin/skycoin)
+[TRONCash Godoc](https://godoc.org/github.com/troncash/troncash)
 
-### libskycoin Documentation
+### libtroncash Documentation
 
-[libskycoin documentation](/lib/cgo/README.md)
+[libtroncash documentation](/lib/cgo/README.md)
 
 ## Implementation guidelines
 
@@ -98,10 +98,10 @@ Another option is to check the unspent outputs for a list of known deposit addre
 
 #### Using the CLI
 
-To scan the blockchain, use `skycoin-cli lastBlocks` or `skycoin-cli blocks`. These will return block data as JSON
+To scan the blockchain, use `troncash-cli lastBlocks` or `troncash-cli blocks`. These will return block data as JSON
 and new unspent outputs sent to an address can be detected.
 
-To check address outputs, use `skycoin-cli addressOutputs`. If you only want the balance, you can use `skycoin-cli addressBalance`.
+To check address outputs, use `troncash-cli addressOutputs`. If you only want the balance, you can use `troncash-cli addressBalance`.
 
 #### Using the REST API
 
@@ -115,9 +115,9 @@ To check address outputs, call `GET /api/v1/outputs?addrs=`. If you only want th
 * [`GET /api/v1/outputs` docs](src/api/README.md#get-unspent-output-set-of-address-or-hash)
 * [`GET /api/v1/balance` docs](src/api/README.md#get-balance-of-addresses)
 
-#### Using skycoin as a library in a Go application
+#### Using troncash as a library in a Go application
 
-We recommend using the [Skycoin REST API Client](https://godoc.org/github.com/skycoin/skycoin/src/api#Client).
+We recommend using the [TRONCash REST API Client](https://godoc.org/github.com/troncash/troncash/src/api#Client).
 
 ### Sending coins
 
@@ -127,7 +127,7 @@ After each spend, wait for the transaction to confirm before trying to spend aga
 
 For higher throughput, combine multiple spends into one transaction.
 
-Skycoin uses "coin hours" to ratelimit transactions.
+TRONCash uses "coin hours" to ratelimit transactions.
 The total number of coinhours in a transaction's outputs must be 50% or less than the number of coinhours in a transaction's inputs,
 or else the transaction is invalid and will not be accepted. A transaction must have at least 1 input with at least 1 coin hour.
 Sending too many transactions in quick succession will use up all available coinhours.
@@ -153,31 +153,31 @@ See [CLI command API](cmd/cli/README.md) for documentation of the CLI interface.
 
 To perform a send, the preferred method follows these steps in a loop:
 
-* `skycoin-cli createRawTransaction -m '[{"addr:"$addr1,"coins:"$coins1"}, ...]` - `-m` flag is send-to-many
-* `skycoin-cli broadcastTransaction` - returns `txid`
-* `skycoin-cli transaction $txid` - repeat this command until `"status"` is `"confirmed"`
+* `troncash-cli createRawTransaction -m '[{"addr:"$addr1,"coins:"$coins1"}, ...]` - `-m` flag is send-to-many
+* `troncash-cli broadcastTransaction` - returns `txid`
+* `troncash-cli transaction $txid` - repeat this command until `"status"` is `"confirmed"`
 
 That is, create a raw transaction, broadcast it, and wait for it to confirm.
 
 #### Using the REST API
 
-Create a transaction with [POST /wallet/transaction](https://github.com/skycoin/skycoin/blob/develop/src/api/README.md#create-transaction),
-then inject it to the network with [POST /injectTransaction](https://github.com/skycoin/skycoin/blob/develop/src/api/README.md#inject-raw-transaction).
+Create a transaction with [POST /wallet/transaction](https://github.com/troncash/troncash/blob/develop/src/api/README.md#create-transaction),
+then inject it to the network with [POST /injectTransaction](https://github.com/troncash/troncash/blob/develop/src/api/README.md#inject-raw-transaction).
 
-When using `POST /wallet/transaction`, a wallet file local to the skycoin node is used.
+When using `POST /wallet/transaction`, a wallet file local to the troncash node is used.
 The wallet file is specified by wallet ID, and all wallet files are in the
-configured data directory (which is `$HOME/.skycoin/wallets` by default).
+configured data directory (which is `$HOME/.troncash/wallets` by default).
 
-#### Using skycoin as a library in a Go application
+#### Using troncash as a library in a Go application
 
 If your application is written in Go, you can interface with the CLI library
-directly, see [Skycoin CLI Godoc](https://godoc.org/github.com/skycoin/skycoin/src/cli).
+directly, see [TRONCash CLI Godoc](https://godoc.org/github.com/troncash/troncash/src/cli).
 
-A REST API client is also available: [Skycoin REST API Client Godoc](https://godoc.org/github.com/skycoin/skycoin/src/api#Client).
+A REST API client is also available: [TRONCash REST API Client Godoc](https://godoc.org/github.com/troncash/troncash/src/api#Client).
 
 #### Coinhours
 
-Transaction fees in skycoin is paid in coinhours and is currently set to `50%`,
+Transaction fees in troncash is paid in coinhours and is currently set to `50%`,
 every transaction created burns `50%` of the total coinhours in all the input
 unspents.
 
@@ -193,7 +193,7 @@ which are then converted to `coinhours`, `1` coinhour = `3600` coinseconds.
 When using the REST API, the coin hours sent to the destination and change can be controlled.
 The 50% burn fee is still required.
 
-See the [POST /wallet/transaction](https://github.com/skycoin/skycoin/blob/develop/src/api/README.md#create-transaction)
+See the [POST /wallet/transaction](https://github.com/troncash/troncash/blob/develop/src/api/README.md#create-transaction)
 documentation for more information on how to control the coin hours.
 
 We recommend sending at least 1 coin hour to each destination, otherwise the receiver will have to
@@ -203,14 +203,14 @@ wait for another coin hour to accumulate before they can make another transactio
 
 When using the CLI the amount of coinhours sent to the receiver is capped to
 the number of coins they receive with a minimum of `1` coinhour for transactions
-with `<1` skycoin being sent.
+with `<1` troncash being sent.
 
 The coinhours left after burning `50%` and sending to receivers are sent to the change address.
 
-For eg. If an address has `10` skycoins and `50` coinhours and only `1` unspent.
-If we send `5` skycoins to another address then that address will receive
-`5` skycoins and `5` coinhours, `26` coinhours will be burned.
-The sending address will be left with `5` skycoins and `19` coinhours which
+For eg. If an address has `10` troncashs and `50` coinhours and only `1` unspent.
+If we send `5` troncashs to another address then that address will receive
+`5` troncashs and `5` coinhours, `26` coinhours will be burned.
+The sending address will be left with `5` troncashs and `19` coinhours which
 will then be sent to the change address.
 
 
@@ -219,16 +219,16 @@ will then be sent to the change address.
 #### Using the CLI
 
 ```sh
-skycoin-cli verifyAddress $addr
+troncash-cli verifyAddress $addr
 ```
 
 #### Using the REST API
 
 Not directly supported, but API calls that have an address argument will return `400 Bad Request` if they receive an invalid address.
 
-#### Using skycoin as a library in a Go application
+#### Using troncash as a library in a Go application
 
-https://godoc.org/github.com/skycoin/skycoin/src/cipher#DecodeBase58Address
+https://godoc.org/github.com/troncash/troncash/src/cipher#DecodeBase58Address
 
 ```go
 if _, err := cipher.DecodeBase58Address(address); err != nil {
@@ -237,13 +237,13 @@ if _, err := cipher.DecodeBase58Address(address); err != nil {
 }
 ```
 
-#### Using skycoin as a library in other applications
+#### Using troncash as a library in other applications
 
-Address validation is available through a C wrapper, `libskycoin`.
+Address validation is available through a C wrapper, `libtroncash`.
 
-See the [libskycoin documentation](/lib/cgo/README.md) for usage instructions.
+See the [libtroncash documentation](/lib/cgo/README.md) for usage instructions.
 
-### Checking Skycoin node connections
+### Checking TRONCash node connections
 
 #### Using the CLI
 
@@ -253,27 +253,27 @@ Not implemented
 
 * `GET /api/v1/network/connections`
 
-#### Using skycoin as a library in a Go application
+#### Using troncash as a library in a Go application
 
-Use the [Skycoin REST API Client](https://godoc.org/github.com/skycoin/skycoin/src/api#Client)
+Use the [TRONCash REST API Client](https://godoc.org/github.com/troncash/troncash/src/api#Client)
 
-### Checking Skycoin node status
+### Checking TRONCash node status
 
 #### Using the CLI
 
 ```sh
-skycoin-cli status
+troncash-cli status
 ```
 
 #### Using the REST API
 
-A method similar to `skycoin-cli status` is not implemented, but these endpoints can be used:
+A method similar to `troncash-cli status` is not implemented, but these endpoints can be used:
 
 * `GET /api/v1/health`
 * `GET /api/v1/version`
 * `GET /api/v1/blockchain/metadata`
 * `GET /api/v1/blockchain/progress`
 
-#### Using skycoin as a library in a Go application
+#### Using troncash as a library in a Go application
 
-Use the [Skycoin CLI package](https://godoc.org/github.com/skycoin/skycoin/src/cli)
+Use the [TRONCash CLI package](https://godoc.org/github.com/troncash/troncash/src/cli)
